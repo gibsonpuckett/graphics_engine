@@ -1,60 +1,23 @@
- #include "config.h"
+#include "main.h"
+#include "shader.h"
 
-#define WIDTH 640
-#define HEIGHT 480
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <math.h>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 
-// Resize window callback
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-  glViewport(0, 0, width, height);
-}
-
-void processInput(GLFWwindow *window)
-{
-  if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-    glfwSetWindowShouldClose(window, true);
-}
-
-char* readShaderSource(const char* filePath)
-{
-  FILE* file = fopen(filePath, "r");
-  if (!file) {
-    fprintf(stderr, "Could not open shader file %s\n", filePath);
-    return NULL;
-  }
-
-  fseek(file, 0, SEEK_END);
-  long length = ftell(file);
-  rewind(file);
-
-  // Temporarily malloc, eventually manually reserve memory
-  char* buffer = (char*)malloc(length + 1);
-  if (!buffer) {
-    fprintf(stderr, "Memory allocation failed for shader file\n");
-    fclose(file);
-    return NULL;
-  }
-
-  fread(buffer, 1, length, file);
-  buffer[length] = '\0';
-  fclose(file);
-  return buffer;
-}
+#define WIDTH 800
+#define HEIGHT 600
 
 int main()
 {
   // Initialize Variables
-  void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-  void processInput(GLFWwindow *window);
-  
   GLFWwindow* window;
-
   unsigned int VBO, EBO, VAO, vertexShader, fragmentShader, shaderProgram;
   int success, nrAttributes;
   char infoLog[512];
-
-  char *vertexShaderSource = readShaderSource("../src/vertex_shader.glsl");
-  char *fragmentShaderSource = readShaderSource("../src/fragment_shader.glsl");
 
   float vertices[] =
   {
@@ -104,40 +67,9 @@ int main()
   glGenBuffers(1, &VBO);
   glGenBuffers(1, &EBO);
 
-  // Create vertex shader
-  vertexShader = glCreateShader(GL_VERTEX_SHADER);
-  glShaderSource(vertexShader, 1, (const GLchar **)&vertexShaderSource, NULL);
-  glCompileShader(vertexShader);
-  glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-  if(!success)
-  {
-    glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-    printf("ERROR::SHADER::VERTEX::COMPILATION_FAILED\n%s\n", infoLog);
-  };
-
-  // Create fragment shader
-  fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-  glShaderSource(fragmentShader, 1, (const GLchar **)&fragmentShaderSource, NULL);
-  glCompileShader(fragmentShader);
-  glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-  if (!success)
-  {
-    glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-    printf("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n%s\n", infoLog);
-  };
+  // Create Shaders
+  shader_t shader = shader_create(VERTEX_SHADER_PATH, FRAGMENT_SHADER_PATH);
   
-  // Create Shader Program
-  shaderProgram = glCreateProgram();
-  glAttachShader(shaderProgram, vertexShader);
-  glAttachShader(shaderProgram, fragmentShader);
-  glLinkProgram(shaderProgram);
-  glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-  if(!success)
-  {
-    glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-    printf("ERROR::SHADER::LINK::COMPILATION_FAILED\n%s\n", infoLog);
-  }
-
   // 1. Generate and bind vertex array object
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
@@ -162,19 +94,14 @@ int main()
 
   // 5. Draw the object in render loop
     
-  // Delete shaders after use 
-  glDeleteShader(vertexShader);
-  glDeleteShader(fragmentShader);
-  free(vertexShaderSource);
-  free(fragmentShaderSource);
-
   // Wireframe mode
   // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
   //glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &nrAttributes);
   //printf("Maximum number of vertex attributes supported: %d \n", nrAttributes);
   glUseProgram(shaderProgram);
-  
+
+  // 
   // Main Loop
   while (!glfwWindowShouldClose(window))
   {
@@ -185,15 +112,10 @@ int main()
     glClear(GL_COLOR_BUFFER_BIT);
 
     // Use correct shader program
-    glUseProgram(shaderProgram);
+    shader_use(&shader);
+    shader_set_float(&shader, "someUniform", 1.0f); 
 
-    // Change color over time
-    /* float timeValue = glfwGetTime(); */
-    /* float greenValue = (sin(timeValue) / 2.0f) + 0.5f; */
-    /* float redValue = (cos(timeValue) / 2.0f) + 0.5f; */
-    /* int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor"); */
-    /* glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f); */
-    
+    // Draw to screen
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
@@ -205,10 +127,21 @@ int main()
   // Upon termination
   glDeleteVertexArrays(1, &VAO);
   glDeleteBuffers(1, &VBO);
-  glDeleteProgram(shaderProgram);
-  
+
+  shader_destroy(&shader);
   glfwDestroyWindow(window);
 
   glfwTerminate();
   return 0;
+}
+
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+  glViewport(0, 0, width, height);
+}
+
+void processInput(GLFWwindow *window)
+{
+  if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    glfwSetWindowShouldClose(window, true);
 }

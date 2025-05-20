@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/gibdebian/Development/gamedev/opengl/dependencies
+C_INCLUDES = -I/home/gibdebian/Development/gamedev/opengl/dependencies -I/home/gibdebian/Development/gamedev/opengl/include -I/home/gibdebian/Development/gamedev/opengl/assets
 
 C_FLAGS = 
 

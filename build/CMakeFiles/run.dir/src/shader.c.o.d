@@ -1,7 +1,7 @@
-CMakeFiles/run.dir/src/main.c.o: \
- /home/gibdebian/Development/gamedev/opengl/src/main.c \
+CMakeFiles/run.dir/src/shader.c.o: \
+ /home/gibdebian/Development/gamedev/opengl/src/shader.c \
  /usr/include/stdc-predef.h \
- /home/gibdebian/Development/gamedev/opengl/include/main.h \
+ /home/gibdebian/Development/gamedev/opengl/include/shader.h \
  /home/gibdebian/Development/gamedev/opengl/dependencies/glad/glad.h \
  /home/gibdebian/Development/gamedev/opengl/dependencies/KHR/khrplatform.h \
  /usr/lib/gcc/x86_64-linux-gnu/12/include/stdint.h /usr/include/stdint.h \
@@ -19,10 +19,8 @@ CMakeFiles/run.dir/src/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /home/gibdebian/Development/gamedev/opengl/dependencies/GLFW/glfw3.h \
- /usr/lib/gcc/x86_64-linux-gnu/12/include/stddef.h \
- /home/gibdebian/Development/gamedev/opengl/include/shader.h \
  /usr/lib/gcc/x86_64-linux-gnu/12/include/stdbool.h /usr/include/stdio.h \
+ /usr/lib/gcc/x86_64-linux-gnu/12/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/12/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
@@ -56,11 +54,4 @@ CMakeFiles/run.dir/src/main.c.o: \
  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
- /usr/include/x86_64-linux-gnu/bits/stdlib-float.h /usr/include/math.h \
- /usr/include/x86_64-linux-gnu/bits/math-vector.h \
- /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
- /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
- /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
- /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls.h
+ /usr/include/x86_64-linux-gnu/bits/stdlib-float.h

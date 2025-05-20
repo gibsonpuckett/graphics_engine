@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/gibdebian/Development/gamedev/opengl/src/glad.c" "CMakeFiles/run.dir/src/glad.c.o" "gcc" "CMakeFiles/run.dir/src/glad.c.o.d"
   "/home/gibdebian/Development/gamedev/opengl/src/main.c" "CMakeFiles/run.dir/src/main.c.o" "gcc" "CMakeFiles/run.dir/src/main.c.o.d"
+  "/home/gibdebian/Development/gamedev/opengl/src/shader.c" "CMakeFiles/run.dir/src/shader.c.o" "gcc" "CMakeFiles/run.dir/src/shader.c.o.d"
   )
 
 # Targets to which this target links.

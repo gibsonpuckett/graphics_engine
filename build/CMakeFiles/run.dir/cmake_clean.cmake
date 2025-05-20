@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/run.dir/src/glad.c.o.d"
   "CMakeFiles/run.dir/src/main.c.o"
   "CMakeFiles/run.dir/src/main.c.o.d"
+  "CMakeFiles/run.dir/src/shader.c.o"
+  "CMakeFiles/run.dir/src/shader.c.o.d"
   "run"
   "run.pdb"
 )
