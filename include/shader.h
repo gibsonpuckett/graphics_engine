@@ -2,6 +2,7 @@
 #include <glad/glad.h>
 #include <stdbool.h>
 
+#define SHADER_DIR "../assets/shaders/"
 #define VERTEX_SHADER_PATH "../assets/shaders/vertex_shader.glsl"
 #define FRAGMENT_SHADER_PATH "../assets/shaders/fragment_shader.glsl"
 
