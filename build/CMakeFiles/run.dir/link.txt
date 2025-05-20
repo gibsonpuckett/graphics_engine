@@ -1,0 +1,1 @@
+/usr/bin/cc -rdynamic CMakeFiles/run.dir/src/main.c.o CMakeFiles/run.dir/src/glad.c.o -o run  -lm -lglfw /usr/lib/x86_64-linux-gnu/libGL.so 
