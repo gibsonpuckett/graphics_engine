@@ -65,7 +65,8 @@ int main()
     // Use correct shader program
     shader_use(&shader);
 
-    // Bind texture
+    // Activate and bind texture
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture.id);
 
     // Draw to screen

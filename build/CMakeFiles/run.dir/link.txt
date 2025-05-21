@@ -1,1 +1,0 @@
-/usr/bin/cc -rdynamic CMakeFiles/run.dir/src/main.c.o CMakeFiles/run.dir/src/glad.c.o CMakeFiles/run.dir/src/shader.c.o CMakeFiles/run.dir/src/noise.c.o CMakeFiles/run.dir/src/bmp_loader.c.o -o run  -lm -lglfw /usr/lib/x86_64-linux-gnu/libGL.so 
