@@ -15,7 +15,9 @@ This is a graphics engine written in C with the OpenGL API. Eventually I'll use 
 Install OpenGL development libraries
 
 Debian:
+```
 sudo apt-get install libgl1-mesa-dev xorg-dev build-essential cmake git
+```
 
 Windows:
 - Install latest Graphics Drivers for your GPU from manufacturer.
