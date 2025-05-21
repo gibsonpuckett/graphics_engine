@@ -5,19 +5,13 @@ This is a graphics engine written in C with the OpenGL API. Eventually I'll use 
 ## Getting Started
 
 **Prerequisites**
+
 * C Compiler : GCC, Clang, MSVC (Visual Studio), etc...
 * CMake      : Version 3.10 or newer
-* Git        : To clone repo and manage version control
-
-**Dependencies**
-This project uses the following libraries in the dependencies/ directory:
-* GLFW (Windowing & Inputs)
-* GLAD (OpenGL Loader)
-* cglm (Math C Library)
-
-You do not need to manually install these, CMake will automatically include them in the build as their sources are included in CMakeLists.txt.
+* Git        : To clone this repo
 
 **Requirements**
+
 Install OpenGL development libraries
 
 Debian:
@@ -30,6 +24,7 @@ Windows:
 - Consider using Git Bash or WSL for better compatibility with CMake and Unix-style build steps.
 
 **Building the project**
+
 1. Clone the repository
 ```
 git clone https://github.com/gibsonpuckett/graphics_engine.git
@@ -50,6 +45,13 @@ make  	        # Linux / MacOS
 ./run 	        # Linux / MacOS
 ```
 To clean the build files, on linux type `make clean` and optionally delete the build folder. On windows just delete the build folder. Supposedly sometimes CMake requires running from a developer command prompt for Visual Studio.
+
+**Dependencies**
+
+CMakeLists.txt will automatically include the dependencies in the build from the dependencies directory of this repo. The project uses the following libraries:
+* GLFW (Windowing & Inputs)
+* GLAD (OpenGL Loader)
+* cglm (Math C Library)
 
 ##Build Structure (so far):
 ```
