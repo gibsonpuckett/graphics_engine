@@ -8,8 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/gibdebian/Development/gamedev/opengl/src/bmp_loader.c" "CMakeFiles/run.dir/src/bmp_loader.c.o" "gcc" "CMakeFiles/run.dir/src/bmp_loader.c.o.d"
   "/home/gibdebian/Development/gamedev/opengl/src/glad.c" "CMakeFiles/run.dir/src/glad.c.o" "gcc" "CMakeFiles/run.dir/src/glad.c.o.d"
   "/home/gibdebian/Development/gamedev/opengl/src/main.c" "CMakeFiles/run.dir/src/main.c.o" "gcc" "CMakeFiles/run.dir/src/main.c.o.d"
+  "/home/gibdebian/Development/gamedev/opengl/src/noise.c" "CMakeFiles/run.dir/src/noise.c.o" "gcc" "CMakeFiles/run.dir/src/noise.c.o.d"
   "/home/gibdebian/Development/gamedev/opengl/src/shader.c" "CMakeFiles/run.dir/src/shader.c.o" "gcc" "CMakeFiles/run.dir/src/shader.c.o.d"
   )
 

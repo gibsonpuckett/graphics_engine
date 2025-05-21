@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/run.dir/src/bmp_loader.c.o"
+  "CMakeFiles/run.dir/src/bmp_loader.c.o.d"
   "CMakeFiles/run.dir/src/glad.c.o"
   "CMakeFiles/run.dir/src/glad.c.o.d"
   "CMakeFiles/run.dir/src/main.c.o"
   "CMakeFiles/run.dir/src/main.c.o.d"
+  "CMakeFiles/run.dir/src/noise.c.o"
+  "CMakeFiles/run.dir/src/noise.c.o.d"
   "CMakeFiles/run.dir/src/shader.c.o"
   "CMakeFiles/run.dir/src/shader.c.o.d"
   "run"

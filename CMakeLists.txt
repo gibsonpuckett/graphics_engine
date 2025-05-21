@@ -7,6 +7,8 @@ add_executable(run
 	src/main.c
 	src/glad.c
 	src/shader.c
+	src/noise.c
+	src/bmp_loader.c
 )
 
 target_include_directories(run PRIVATE dependencies include assets)

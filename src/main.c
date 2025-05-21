@@ -1,5 +1,6 @@
 #include "main.h"
 #include "shader.h"
+#include "image_loader.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,21 +24,22 @@ int main()
   uint32_t VBO, EBO, VAO;
   int32_t success, nrAttributes;
   
-  float vertices[] =
-  {
-     // positions         // colors
-     0.0f,  0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  // top center
-     0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // bottom right
-    -0.5f, -0.5f, 0.0f,  0.0f, 0.0f, 1.0f   // bottom left
+  float vertices[] = {
+     // positions          // colors             // texture coords
+     0.5f,  0.5f,  0.0f,   1.0f,  0.0f,  0.0f,   1.0f,  1.0f, // top right
+     0.5f, -0.5f,  0.0f,   0.0f,  1.0f,  0.0f,   1.0f,  0.0f, // bottom right
+    -0.5f, -0.5f,  0.0f,   0.0f,  0.0f,  1.0f,   0.0f,  0.0f, // bottom left
+    -0.5f,  0.5f,  0.0f,   1.0f,  1.0f,  0.0f,   0.0f,  1.0f  // top left
   };
-
+  
   uint32_t indices[] =
-  { 
+  {
     0, 1, 2, // first triangle
+    0, 2, 3, // second triangle
   };
   
   float background_color[] = { 0.3f, 0.6f, 1.0f, 1.0f }; // RGBA
-
+  
   // STEP 1 :: CREATE & INITIALIZE WINDOW
   make_window(&window_ptr, WIDTH, HEIGHT, background_color);
 
@@ -46,6 +48,11 @@ int main()
   
   // STEP 3 :: CREATE SHADER
   shader_t shader = shader_create(VERTEX_SHADER_PATH, FRAGMENT_SHADER_PATH);
+  printf("Shader loaded: (ID %u)\n", shader.id);
+  
+  // STEP 4 :: ADD TEXTURES
+  texture_t texture = texture_load_bmp(TEXTURE_PATH);
+  printf("Texture loaded: (ID %u)\n", texture.id);
 
   // Main Loop
   while (!glfwWindowShouldClose(window_ptr)) {
@@ -57,7 +64,9 @@ int main()
 
     // Use correct shader program
     shader_use(&shader);
-    shader_set_float(&shader, "someUniform", 1.0f); 
+
+    // Bind texture
+    glBindTexture(GL_TEXTURE_2D, texture.id);
 
     // Draw to screen
     glBindVertexArray(VAO);
@@ -72,6 +81,7 @@ int main()
   glDeleteVertexArrays(1, &VAO);
   glDeleteBuffers(1, &VBO);
 
+  texture_destroy_bmp(&texture);
   shader_destroy(&shader);
   glfwDestroyWindow(window_ptr);
   glfwTerminate();
@@ -114,15 +124,19 @@ void setup_vertex_data(
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, index_size, indices, GL_STATIC_DRAW);
 
   // Describe vertex data layout
-  const uint32_t stride = 6 * sizeof(float);
+  const uint32_t stride = 8 * sizeof(float);
 
   // Vertex Position
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stride, (void*)0); //(void*)0 --> index starts at 0 position
   glEnableVertexAttribArray(0);
 
   // Vertex Color
-  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stride, (void*)(3 * sizeof(float))); // (void*)(3 * sizeof(float)) --> starts after first 3 floats
+  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stride, (void*)(3 * sizeof(float))); 
   glEnableVertexAttribArray(1);
+
+  // Vertex Texture
+  glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, stride, (void*)(6 * sizeof(float)));
+  glEnableVertexAttribArray(2);
 
   // Example //
   
@@ -157,6 +171,7 @@ int make_window(GLFWwindow** window_ptr, int32_t width, int32_t height, const fl
     glfwTerminate();
     return -1;
   }
+  
   glfwMakeContextCurrent(*window_ptr);
 
   // Initialize GLAD
@@ -177,3 +192,5 @@ int make_window(GLFWwindow** window_ptr, int32_t width, int32_t height, const fl
 
   return 0;
 }
+
+

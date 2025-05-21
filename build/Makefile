@@ -129,6 +129,30 @@ run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
 .PHONY : run/fast
 
+src/bmp_loader.o: src/bmp_loader.c.o
+.PHONY : src/bmp_loader.o
+
+# target to build an object file
+src/bmp_loader.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/bmp_loader.c.o
+.PHONY : src/bmp_loader.c.o
+
+src/bmp_loader.i: src/bmp_loader.c.i
+.PHONY : src/bmp_loader.i
+
+# target to preprocess a source file
+src/bmp_loader.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/bmp_loader.c.i
+.PHONY : src/bmp_loader.c.i
+
+src/bmp_loader.s: src/bmp_loader.c.s
+.PHONY : src/bmp_loader.s
+
+# target to generate assembly for a file
+src/bmp_loader.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/bmp_loader.c.s
+.PHONY : src/bmp_loader.c.s
+
 src/glad.o: src/glad.c.o
 .PHONY : src/glad.o
 
@@ -177,6 +201,30 @@ src/main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/main.c.s
 .PHONY : src/main.c.s
 
+src/noise.o: src/noise.c.o
+.PHONY : src/noise.o
+
+# target to build an object file
+src/noise.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/noise.c.o
+.PHONY : src/noise.c.o
+
+src/noise.i: src/noise.c.i
+.PHONY : src/noise.i
+
+# target to preprocess a source file
+src/noise.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/noise.c.i
+.PHONY : src/noise.c.i
+
+src/noise.s: src/noise.c.s
+.PHONY : src/noise.s
+
+# target to generate assembly for a file
+src/noise.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/noise.c.s
+.PHONY : src/noise.c.s
+
 src/shader.o: src/shader.c.o
 .PHONY : src/shader.o
 
@@ -210,12 +258,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... run"
+	@echo "... src/bmp_loader.o"
+	@echo "... src/bmp_loader.i"
+	@echo "... src/bmp_loader.s"
 	@echo "... src/glad.o"
 	@echo "... src/glad.i"
 	@echo "... src/glad.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/noise.o"
+	@echo "... src/noise.i"
+	@echo "... src/noise.s"
 	@echo "... src/shader.o"
 	@echo "... src/shader.i"
 	@echo "... src/shader.s"
