@@ -20,7 +20,7 @@ sudo apt-get install libgl1-mesa-dev xorg-dev build-essential cmake git
 Windows:
 - Install latest Graphics Drivers for your GPU from manufacturer
 - Install Visual Studio (community edition) with Desktop Development with C/C++ workload, this includes MSVC compiler and build tools
-- Install CMake from https://cmake.org/download/ and add it to your PATH
+- [Install CMake](https://cmake.org/download/) and add it to your PATH
 - Consider using Git Bash or WSL for better compatibility with CMake and Unix-style build steps.
 
 **Building the project**
