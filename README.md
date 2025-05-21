@@ -1,6 +1,6 @@
 # Gibson's Graphics Engine
 
-This is a graphics engine written in C with the OpenGL API. Eventually I'll use it as a base to build a game or simulator of some kind on. I want to experiment with procedural generation, especially procedural animation, in C. For now, I'm aiming to use minimal libraries, and I'm sticking to .bmp image files for textures so I can write my own image loader. Eventually if it makes more sense to go with extra libraries then I will. Part of this project is just to experiment with and learn these low-level processes, so that's guiding my decision to remain in C with minimal libraries. I would also like to experiment with Entity-Component-System style of programming, and think about optimization for both speed and memory/resource usage.
+This is a graphics engine written in C with the OpenGL API. Eventually I'll use it as a base to build a game or simulator of some kind on. I want to experiment with procedural generation, especially procedural animation, in C. For now, I'm aiming to use minimal libraries, and I'm sticking to .bmp image files for textures so I can write my own image loader. Eventually if it makes more sense to go with extra libraries then I will. Part of this project is just to experiment with and learn these low-level processes, so that's guiding my decision to remain in C with minimal libraries. I would also like to experiment with Entity-Component-System style of programming, and think about optimization for both speed and memory/resource usage. At some point I may be interested in switching to or adding support for Vulkan.
 
 ## Getting Started
 
@@ -14,10 +14,7 @@ This is a graphics engine written in C with the OpenGL API. Eventually I'll use 
 
 Install OpenGL development libraries
 
-Debian:
-```
-sudo apt-get install libgl1-mesa-dev xorg-dev build-essential cmake git
-```
+On Debian, `sudo apt-get install libgl1-mesa-dev xorg-dev build-essential cmake git`
 
 Windows:
 - Install latest Graphics Drivers for your GPU from manufacturer.
@@ -55,6 +52,7 @@ CMakeLists.txt will automatically include the dependencies in the build from the
 * GLAD (OpenGL Loader)
 * cglm (Math C Library)
 
+OpenGL is also required, but is not maintained in the dependencies folder. I'm using OpenGL version 4.6.
 ##Build Structure (so far):
 ```
 engine/
